@@ -1,0 +1,90 @@
+.nickname-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.nickname-card {
+  background: #2a2a2a;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #3a3a3a;
+}
+
+.nickname-card h2 {
+  color: #8b5cf6;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.nickname-card p {
+  color: #b0b0b0;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.nickname-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nickname-input {
+  padding: 1rem;
+  border: 2px solid #3a3a3a;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.nickname-input:focus {
+  border-color: #8b5cf6;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  text-align: left;
+  margin-top: -0.5rem;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .nickname-card {
+    padding: 2rem;
+  }
+
+  .nickname-card h2 {
+    font-size: 1.5rem;
+  }
+}
+

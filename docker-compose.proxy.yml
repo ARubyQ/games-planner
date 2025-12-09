@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  games-planner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: games-planner
+    restart: unless-stopped
+    expose:
+      - "3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      - games-planner-data:/app/data
+    networks:
+      - games-planner-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/api/slots/default', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  nginx:
+    image: nginx:alpine
+    container_name: games-planner-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - games-planner-network
+    depends_on:
+      - games-planner
+
+volumes:
+  games-planner-data:
+    driver: local
+
+networks:
+  games-planner-network:
+    driver: bridge
+
