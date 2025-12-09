@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      no_cache: true
     container_name: games-planner
     restart: unless-stopped
     ports:
