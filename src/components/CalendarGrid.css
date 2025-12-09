@@ -173,6 +173,14 @@
   max-height: calc(125vh - 100px);
 }
 
+@media (max-width: 768px) {
+  .calendar-wrapper {
+    max-height: calc(100dvh - 180px);
+    height: calc(100dvh - 180px);
+    min-height: 300px;
+  }
+}
+
 .calendar-headers {
   display: flex;
   gap: 2px;

@@ -36,8 +36,15 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #root {
-  min-height: 100vh;
-  height: auto;
+  min-height: 100dvh;
+  height: 100dvh;
+}
+
+@media (min-width: 769px) {
+  #root {
+    min-height: 100vh;
+    height: auto;
+  }
 }
 
 /* Масштабирование только для десктопа */
