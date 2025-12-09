@@ -36,14 +36,16 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #root {
-  min-height: 100dvh;
-  height: 100dvh;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 769px) {
   #root {
-    min-height: 100vh;
     height: auto;
+    min-height: 100vh;
   }
 }
 

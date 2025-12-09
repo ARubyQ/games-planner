@@ -1,13 +1,22 @@
 .app {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  height: 100%;
   overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  .app {
+    height: 100svh;
+  }
 }
 
 @media (min-width: 769px) {
   .app {
     height: 125vh;
+    flex: none;
   }
 }
 

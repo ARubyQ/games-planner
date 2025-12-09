@@ -40,6 +40,7 @@
 .filter-container {
   margin-bottom: 0.75rem;
   position: relative;
+  flex-shrink: 0;
 }
 
 .filter-toggle {
@@ -163,6 +164,7 @@
   color: #b0b0b0;
   font-size: 0.85rem;
   border: 1px solid #3a3a3a;
+  flex-shrink: 0;
 }
 
 .calendar-wrapper {
@@ -172,19 +174,6 @@
   width: 100%;
   flex: 1;
   min-height: 0;
-}
-
-@media (max-width: 768px) {
-  .calendar-wrapper {
-    flex: none;
-    min-height: 300px;
-  }
-}
-
-@media (min-width: 769px) {
-  .calendar-wrapper {
-    max-height: calc(125vh - 100px);
-  }
 }
 
 .calendar-headers {

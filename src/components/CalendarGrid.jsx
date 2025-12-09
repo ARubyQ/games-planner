@@ -19,7 +19,6 @@ function CalendarGrid({ nickname, calendarId = 'default' }) {
   const syncIntervalRef = useRef(null)
   const isDraggingRef = useRef(false)
   const [hoveredSlot, setHoveredSlot] = useState(null)
-  const calendarWrapperRef = useRef(null)
   const getUserTimezone = () => {
     const saved = localStorage.getItem(`timezone_${calendarId}`)
     if (saved) {
@@ -202,41 +201,6 @@ function CalendarGrid({ nickname, calendarId = 'default' }) {
       }
     }
   }, [calendarId, timezone, convertFromUTC])
-
-  useEffect(() => {
-    const updateCalendarHeight = () => {
-      if (calendarWrapperRef.current && window.innerWidth <= 768) {
-        const appHeader = document.querySelector('.app-header')
-        const appMain = document.querySelector('.app-main')
-        const calendarContainer = document.querySelector('.calendar-container')
-        const filterContainer = document.querySelector('.filter-container')
-        const calendarInfo = document.querySelector('.calendar-info')
-        
-        if (appHeader && appMain && calendarContainer) {
-          const headerHeight = appHeader.offsetHeight
-          const mainPadding = parseInt(window.getComputedStyle(appMain).paddingTop) + parseInt(window.getComputedStyle(appMain).paddingBottom)
-          const containerPadding = parseInt(window.getComputedStyle(calendarContainer).paddingTop) + parseInt(window.getComputedStyle(calendarContainer).paddingBottom)
-          const filterHeight = filterContainer ? filterContainer.offsetHeight + parseInt(window.getComputedStyle(filterContainer).marginBottom) : 0
-          const infoHeight = calendarInfo ? calendarInfo.offsetHeight + parseInt(window.getComputedStyle(calendarInfo).marginBottom) : 0
-          
-          const availableHeight = window.innerHeight - headerHeight - mainPadding - containerPadding - filterHeight - infoHeight - 20
-          calendarWrapperRef.current.style.height = `${Math.max(300, availableHeight)}px`
-        }
-      }
-    }
-    
-    updateCalendarHeight()
-    window.addEventListener('resize', updateCalendarHeight)
-    window.addEventListener('orientationchange', updateCalendarHeight)
-    
-    const interval = setInterval(updateCalendarHeight, 100)
-    
-    return () => {
-      window.removeEventListener('resize', updateCalendarHeight)
-      window.removeEventListener('orientationchange', updateCalendarHeight)
-      clearInterval(interval)
-    }
-  }, [selectedFilterNicknames, isFilterOpen])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -677,7 +641,7 @@ function CalendarGrid({ nickname, calendarId = 'default' }) {
           </div>
         )}
       </div>
-      <div className="calendar-wrapper" ref={calendarWrapperRef}>
+      <div className="calendar-wrapper">
         <div className="calendar-headers">
           <div className="time-column-header">
             <div className="time-header">Время</div>
