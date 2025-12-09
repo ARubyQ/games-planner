@@ -33,7 +33,7 @@ function CalendarPage() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Планировщик игр {calendarId !== 'default' && `- ${calendarId}`}</h1>
+        <h1>Планировщик игр НРИ {calendarId !== 'default' && `- ${calendarId}`}</h1>
         <div className="user-info">
           <TimezoneSelector calendarId={calendarId} />
           <span className="nickname">Игрок: {nickname}</span>
