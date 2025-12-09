@@ -170,14 +170,20 @@
   overflow-x: auto;
   overflow-y: auto;
   width: 100%;
-  max-height: calc(125vh - 100px);
+  flex: 1;
+  min-height: 0;
 }
 
 @media (max-width: 768px) {
   .calendar-wrapper {
-    max-height: calc(100dvh - 180px);
-    height: calc(100dvh - 180px);
+    flex: none;
     min-height: 300px;
+  }
+}
+
+@media (min-width: 769px) {
+  .calendar-wrapper {
+    max-height: calc(125vh - 100px);
   }
 }
 
